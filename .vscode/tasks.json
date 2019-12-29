@@ -1,0 +1,62 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "g++",
+            "linux": {
+                "args": [
+                    "${workspaceRoot}/src/main.cpp",
+                    // Include all source files.
+                    "${workspaceRoot}/dependencies/GLAD/src/glad.c",
+
+                    // Include .cpp files here (These are for .h file code)
+                    "${workspaceRoot}/src/shader.cpp",
+                    "${workspaceRoot}/src/engine.cpp",
+                    
+                    "-g",
+                    "--std=c++17",
+                    "-I${workspaceRoot}/dependencies/GLFW/include",
+                    "-I${workspaceFolder}/dependencies/GLAD/include",
+                    "-I${workspaceFolder}/dependencies/GLM",
+                    "-lopengl32",
+                    "-L${workspaceRoot}/dependencies/GLFW/lib-mingw",
+                    "-static",
+                    "-lglfw3dll",
+                    "-o",
+                    "${workspaceRoot}/builds/windows/main"
+                ]
+            },
+            "windows": {
+                "args": [
+                    "${workspaceRoot}/src/main.cpp",
+                    // Include all source files.
+                    "${workspaceRoot}/dependencies/GLAD/src/glad.c",
+
+                    // Include .cpp files here (These are for .h file code)
+                    "${workspaceRoot}/src/shader.cpp",
+                    "${workspaceRoot}/src/engine.cpp",
+                    
+                    "-g",
+                    "--std=c++17",
+                    "-I${workspaceRoot}/dependencies/GLFW/include",
+                    "-I${workspaceFolder}/dependencies/GLAD/include",
+                    "-I${workspaceFolder}/dependencies/GLM",
+                    "-lopengl32",
+                    "-L${workspaceRoot}/dependencies/GLFW/lib-mingw",
+                    "-static",
+                    "-lglfw3dll",
+                    "-o",
+                    "${workspaceRoot}/builds/windows/main"
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

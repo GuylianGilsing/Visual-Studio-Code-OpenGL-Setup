@@ -1,0 +1,3 @@
+# Ignore all executables.
+/builds/linux/*.exe
+/builds/windows/*.exe
